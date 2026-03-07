@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sritejaflex.com/sitemap.xml
+
+# Allow all important pages
+Allow: /services/
+Allow: /gallery/
+Allow: /contact/
+Allow: /blog/
+
+# Block admin and private pages
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
