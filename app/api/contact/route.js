@@ -34,7 +34,7 @@ ${message}
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "sriteja.tanuku@gmail.com",
+      to: "sritejawebsite@gmail.com",
       subject: `New Contact Form - ${name}`,
       text: mailContent,
     });
