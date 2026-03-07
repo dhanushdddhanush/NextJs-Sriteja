@@ -47,7 +47,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-16 w-16">
             <Image
-              src="/images/logo.jpg"
+              src="/images/Logo.jpg"
               alt="Sri Teja Flex Logo"
               fill
               className="object-contain"
