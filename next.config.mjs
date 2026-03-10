@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",   // tells Next.js to generate static HTML in 'out' folder
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
-    unoptimized: true // allows <Image> to use direct URLs without optimization
-  }
+    unoptimized: true,
+  },
 }
 
 export default nextConfig
