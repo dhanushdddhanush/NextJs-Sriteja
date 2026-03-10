@@ -222,7 +222,7 @@ export function Footer() {
               <li className="flex items-center gap-3 text-sm">
                 <span className="text-lg">🌐</span>
                 <div>
-                  <p className="font-medium">Want website for your business?</p>
+                  <p className="font-medium">Want website for your business??</p>
                   <a
                     href="tel:7989679464"
                     className="opacity-70 transition-opacity hover:opacity-100"
