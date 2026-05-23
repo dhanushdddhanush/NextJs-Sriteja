@@ -1,29 +1,64 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
-type GalleryItem = {
+export type GalleryImage = {
   src: string
   alt: string
 }
 
-export function ServiceGallery({ images, title }: { images: GalleryItem[]; title: string }) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+export type GalleryCategory = {
+  category: string
+  images: GalleryImage[]
+}
 
-  if (!images || images.length === 0) return null
+export function ServiceGallery({
+  categories,
+  title,
+}: {
+  categories: GalleryCategory[]
+  title: string
+}) {
+  const [lightbox, setLightbox] = useState<{
+    categoryIndex: number
+    imageIndex: number
+  } | null>(null)
+
+  const scrollRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  if (!categories || categories.length === 0) return null
+
+  const activeCategory =
+    lightbox !== null ? categories[lightbox.categoryIndex] : null
+  const activeImages = activeCategory?.images ?? []
 
   const goNext = () => {
-    if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex + 1) % images.length)
-    }
+    if (lightbox === null || activeImages.length === 0) return
+    setLightbox({
+      ...lightbox,
+      imageIndex: (lightbox.imageIndex + 1) % activeImages.length,
+    })
   }
 
   const goPrev = () => {
-    if (selectedIndex !== null) {
-      setSelectedIndex((selectedIndex - 1 + images.length) % images.length)
-    }
+    if (lightbox === null || activeImages.length === 0) return
+    setLightbox({
+      ...lightbox,
+      imageIndex:
+        (lightbox.imageIndex - 1 + activeImages.length) % activeImages.length,
+    })
+  }
+
+  const scrollCategory = (index: number, direction: "left" | "right") => {
+    const el = scrollRefs.current[index]
+    if (!el) return
+    const amount = el.clientWidth * 0.85
+    el.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    })
   }
 
   return (
@@ -37,57 +72,105 @@ export function ServiceGallery({ images, title }: { images: GalleryItem[]; title
             Our {title} Gallery
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Browse through some of our completed {title.toLowerCase()} projects
+            Browse completed projects by category — scroll within each card to
+            view more samples
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {images.map((image, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedIndex(index)}
-              className="group relative overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+        <div className="grid gap-6 lg:grid-cols-2">
+          {categories.map((group, categoryIndex) => (
+            <div
+              key={group.category}
+              className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 transition-colors group-hover:bg-foreground/30">
-                  <span className="translate-y-4 rounded-lg bg-background/90 px-4 py-2 text-xs font-medium text-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                    View Full Size
-                  </span>
+              <div className="flex items-center justify-between border-b border-border px-4 py-3">
+                <div>
+                  <h3 className="font-[family-name:var(--font-heading)] text-sm font-semibold text-foreground">
+                    {group.category}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    {group.images.length} sample
+                    {group.images.length !== 1 ? "s" : ""}
+                  </p>
                 </div>
+                {group.images.length > 1 && (
+                  <div className="flex gap-1">
+                    <button
+                      type="button"
+                      onClick={() => scrollCategory(categoryIndex, "left")}
+                      className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                      aria-label={`Scroll ${group.category} images left`}
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => scrollCategory(categoryIndex, "right")}
+                      className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                      aria-label={`Scroll ${group.category} images right`}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
               </div>
-              <div className="px-4 py-3 text-left">
-                <p className="text-xs text-muted-foreground">{image.alt}</p>
+
+              <div
+                ref={(el) => {
+                  scrollRefs.current[categoryIndex] = el
+                }}
+                className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth p-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {group.images.map((image, imageIndex) => (
+                  <button
+                    key={`${image.src}-${imageIndex}`}
+                    type="button"
+                    onClick={() =>
+                      setLightbox({ categoryIndex, imageIndex })
+                    }
+                    className="group relative w-[min(85%,280px)] shrink-0 snap-start overflow-hidden rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 transition-colors group-hover:bg-foreground/30">
+                        <span className="translate-y-4 rounded-lg bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                          View Full Size
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                ))}
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Lightbox */}
-      {selectedIndex !== null && (
+      {lightbox !== null && activeImages.length > 0 && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/85 p-4 backdrop-blur-sm"
-          onClick={() => setSelectedIndex(null)}
+          onClick={() => setLightbox(null)}
           role="dialog"
           aria-label="Image lightbox"
         >
           <button
-            onClick={() => setSelectedIndex(null)}
+            type="button"
+            onClick={() => setLightbox(null)}
             className="absolute right-4 top-4 z-10 rounded-full bg-background/20 p-2 text-background transition-colors hover:bg-background/40"
             aria-label="Close lightbox"
           >
             <X className="h-6 w-6" />
           </button>
 
-          {images.length > 1 && (
+          {activeImages.length > 1 && (
             <>
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation()
                   goPrev()
@@ -98,6 +181,7 @@ export function ServiceGallery({ images, title }: { images: GalleryItem[]; title
                 <ChevronLeft className="h-6 w-6" />
               </button>
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation()
                   goNext()
@@ -115,18 +199,21 @@ export function ServiceGallery({ images, title }: { images: GalleryItem[]; title
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={images[selectedIndex].src}
-              alt={images[selectedIndex].alt}
+              src={activeImages[lightbox.imageIndex].src}
+              alt={activeImages[lightbox.imageIndex].alt}
               width={1200}
               height={800}
               className="h-auto max-h-[85vh] w-full object-contain"
             />
             <div className="bg-card px-4 py-3 text-center">
-              <p className="text-sm text-muted-foreground">
-                {images[selectedIndex].alt}
+              <p className="text-xs font-medium text-primary">
+                {activeCategory?.category}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {activeImages[lightbox.imageIndex].alt}
               </p>
               <p className="mt-1 text-xs text-muted-foreground/60">
-                {selectedIndex + 1} / {images.length}
+                {lightbox.imageIndex + 1} / {activeImages.length}
               </p>
             </div>
           </div>

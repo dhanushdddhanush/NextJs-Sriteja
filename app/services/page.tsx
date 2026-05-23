@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, MessageCircle } from "lucide-react"
-import { services } from "@/lib/site-data"
+import { services, getFlatServiceGallery, type FlatGalleryImage } from "@/lib/site-data"
 import { useState } from "react"
 import { ServicesSamplesModal } from "@/components/services-samples-modal"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
@@ -11,53 +11,37 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 // Helper function to get the appropriate image for each service
 function getServiceImage(slug: string): string {
   const imageMap: Record<string, string> = {
-    'flex-printing': 'flex-printing.jpg',
-    'foam-board-printing': 'foam-board.jpg',
-    'led-signage-boards': 'led-signage.jpg',
-    'vinyl-printing': 'vinyl-printing.jpg',
+    'pole-flute-board-printing': 'card_01.png',
+    'flute-boards-schools-educational': 'card_02.png',
+    'kite-flute-board-printing': 'card_03.png',
+    'no-parking-boards-printing': 'card_04.png',
+    'flute-boards-hospitals': 'card_05.png',
+    'flute-boards-pesticide-fertilizers': 'card_06.png',
+    'political-flute-board-printing': 'card_07.png',
+    'foam-board-printing': 'card_08.png',
+    'foam-cut-out-printing': 'card_09.png',
+    'eco-solvent-printing': 'card_10.png',
+    'vinyl-printing': 'card_11.png',
+    'one-way-vision-printing': 'card_12.png',
+    'flex-printing': 'card_13.png',
+    'flex-lamination': 'card_14.png',
+    'visiting-card-printing': 'card_15.png',
+    'led-signage-boards': 'card_16.png',
+    'ice-cream-push-cart-printing': 'card_17.png',
   }
   
-  // Return mapped image if available, otherwise use flex-printing.jpg as default
-  return imageMap[slug] || 'flex-printing.jpg'
-}
-
-// Service-related images for gallery functionality
-const serviceGalleryImages: Record<string, Array<{src: string, alt: string, category: string}>> = {
-  'Pole Flute Board Printing Services': [
-    { src: "/images/gallery/gallery-1.jpg", alt: "Large format pole flute board", category: "Pole Flute Board" },
-    { src: "/images/gallery/gallery-6.jpg", alt: "Professional pole flute board printing", category: "Pole Flute Board" },
-    { src: "/images/gallery/gallery-2.jpg", alt: "Pole flute board design", category: "Pole Flute Board" },
-    { src: "/images/gallery/gallery-3.jpg", alt: "Outdoor flute board advertising", category: "Pole Flute Board" },
-    { src: "/images/gallery/gallery-4.jpg", alt: "Custom pole flute board installation", category: "Pole Flute Board" },
-  ],
-  'Flute Boards Printing For Schools & Educational Institutions': [
-    { src: "/images/gallery/gallery-5.jpg", alt: "School flute board display", category: "School Flute Board" },
-    { src: "/images/services/foam-board.jpg", alt: "Educational flute board printing", category: "School Flute Board" },
-    { src: "/images/gallery/gallery-6.jpg", alt: "Custom school flute boards", category: "School Flute Board" },
-    { src: "/images/gallery/gallery-1.jpg", alt: "School event flute board", category: "School Flute Board" },
-  ],
-  'LED Signage Boards': [
-    { src: "/images/services/led-signage.jpg", alt: "Illuminated LED signage", category: "LED Signage" },
-    { src: "/images/gallery/gallery-2.jpg", alt: "Custom LED sign design", category: "LED Signage" },
-    { src: "/images/gallery/gallery-3.jpg", alt: "LED board installation", category: "LED Signage" },
-    { src: "/images/gallery/gallery-4.jpg", alt: "LED signage at night", category: "LED Signage" },
-  ],
-  'Vinyl Printing': [
-    { src: "/images/gallery/gallery-3.jpg", alt: "Vehicle wrap advertising", category: "Vinyl Printing" },
-    { src: "/images/services/vinyl-printing.jpg", alt: "Professional vinyl printing", category: "Vinyl Printing" },
-    { src: "/images/gallery/gallery-4.jpg", alt: "Vinyl graphics design", category: "Vinyl Printing" },
-    { src: "/images/gallery/gallery-5.jpg", alt: "Custom vinyl decals", category: "Vinyl Printing" },
-  ],
+  // Return mapped image if available, otherwise use card_01.png as default
+  return imageMap[slug] || 'card_01.png'
 }
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<string | null>(null)
-  const [galleryImages, setGalleryImages] = useState<Array<{src: string, alt: string, category: string}>>([])
+  const [galleryImages, setGalleryImages] = useState<FlatGalleryImage[]>([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const openImageGallery = (serviceTitle: string) => {
-    const images = serviceGalleryImages[serviceTitle] || []
-    setGalleryImages(images)
+    const service = services.find((s) => s.title === serviceTitle)
+    setGalleryImages(service ? getFlatServiceGallery(service) : [])
     setCurrentImageIndex(0)
   }
 
@@ -106,7 +90,7 @@ export default function ServicesPage() {
                       className="relative w-full h-full overflow-hidden rounded-lg group-hover:scale-105 transition-transform"
                     >
                       <Image
-                        src={`/images/services/${getServiceImage(service.slug)}`}
+                        src={`/images/servicebanners/${getServiceImage(service.slug)}`}
                         alt={service.title}
                         fill
                         className="object-cover"
@@ -213,8 +197,15 @@ export default function ServicesPage() {
           </div>
 
           {/* Image Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-background/20 px-4 py-2 text-xs font-medium text-background">
-            {currentImageIndex + 1} / {galleryImages.length}
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1">
+            {galleryImages[currentImageIndex]?.category && (
+              <span className="rounded-full bg-background/20 px-3 py-1 text-xs font-medium text-background">
+                {galleryImages[currentImageIndex].category}
+              </span>
+            )}
+            <span className="rounded-full bg-background/20 px-4 py-2 text-xs font-medium text-background">
+              {currentImageIndex + 1} / {galleryImages.length}
+            </span>
           </div>
         </div>
       )}

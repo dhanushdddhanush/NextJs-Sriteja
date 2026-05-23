@@ -271,7 +271,7 @@ export default async function ServicePage({ params }: Props) {
     .slice(0, 3)
 
   const serviceImages: Record<string, string> = {
-    "flex-printing": "/images/services/flex-printing.jpg",
+    "flex-printing": "/images/servicebanners/card_13.png",
     "vinyl-printing": "/images/services/vinyl-printing.jpg",
     "foam-board-printing": "/images/services/foam-board.jpg",
     "led-signage-boards": "/images/services/led-signage.jpg",
@@ -282,28 +282,30 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      {/* Breadcrumb */}
-      <div className="border-b border-border bg-secondary">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 text-xs text-muted-foreground">
-          <Link href="/" className="transition-colors hover:text-foreground">
-            Home
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <Link
-            href="/services"
-            className="transition-colors hover:text-foreground"
-          >
-            Services
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <span className="text-foreground">{service.title}</span>
+      {/* set here for section height increase  */}
+      <div className="flex min-h-[calc(100svh-8.5rem)] flex-col">
+        {/* Breadcrumb */}
+        <div className="shrink-0 border-b border-border bg-secondary">
+          <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 text-xs text-muted-foreground">
+            <Link href="/" className="transition-colors hover:text-foreground">
+              Home
+            </Link>
+            <ChevronRight className="h-3 w-3" />
+            <Link
+              href="/services"
+              className="transition-colors hover:text-foreground"
+            >
+              Services
+            </Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-foreground">{service.title}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Hero */}
-      <section className="bg-foreground py-16 text-background md:py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+        {/* Hero — fills remaining viewport */}
+        <section className="flex flex-1 flex-col justify-center bg-foreground py-8 text-background md:py-10">
+          <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4">
+            <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
               <span className="mb-2 inline-block rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary-foreground">
                 Service #{String(serviceIndex + 1).padStart(2, "0")}
@@ -314,7 +316,7 @@ export default async function ServicePage({ params }: Props) {
               <p className="mt-4 text-lg leading-relaxed text-background/70">
                 {service.description}
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
@@ -331,18 +333,20 @@ export default async function ServicePage({ params }: Props) {
                 </a>
               </div>
             </div>
-            <div className="overflow-hidden rounded-2xl">
+            <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl sm:min-h-[260px] lg:max-h-[min(60vh,520px)] lg:min-h-[300px]">
               <Image
                 src={heroImage}
                 alt={service.title}
-                width={600}
-                height={400}
-                className="h-auto w-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Benefits & Use Cases */}
       <section className="bg-background py-20">
@@ -389,7 +393,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Service Gallery */}
       {service.gallery && service.gallery.length > 0 && (
-        <ServiceGallery images={service.gallery} title={service.title} />
+        <ServiceGallery categories={service.gallery} title={service.title} />
       )}
 
       {/* CTA */}

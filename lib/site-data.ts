@@ -49,8 +49,41 @@ export const services = [
       "Business announcements",
     ],
     gallery: [
-      { src: "/images/gallery/gallery-1.jpg", alt: "Pole flute board outdoor installation" },
-      { src: "/images/gallery/gallery-6.jpg", alt: "Large format pole board printing" },
+      {
+        category: "Roadside Advertising",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 1}.jpg`,
+          alt: "Roadside pole flute board advertising",
+        })),
+      },
+      {
+        category: "Event Promotions",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 11}.jpg`,
+          alt: "Event promotion pole flute board",
+        })),
+      },
+      {
+        category: "Directional Signage",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 21}.jpg`,
+          alt: "Directional pole flute board signage",
+        })),
+      },
+      {
+        category: "Political Campaigns",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 31}.jpg`,
+          alt: "Political campaign pole flute board",
+        })),
+      },
+      {
+        category: "Business Announcements",
+        images: Array.from({ length: 9 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 41}.jpg`,
+          alt: "Business announcement pole flute board",
+        })),
+      },
     ],
   },
   {
@@ -75,6 +108,43 @@ export const services = [
       "Sports day events",
       "Annual day promotions",
     ],
+     gallery: [
+      {
+        category: "School notice boards",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/education-flute/${i + 1}.jpg`,
+          alt: "school flute board advertising",
+        })),
+      },
+      {
+        category: "Admission announcements",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/education-flute/${i + 11}.jpg`,
+          alt: "Admission announcements flute board",
+        })),
+      },
+      {
+        category: "Educational displays",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/education-flute/${i + 21}.jpg`,
+          alt: "Educational displays flute board",
+        })),
+      },
+      {
+        category: "Sports day events",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/education-flute/${i + 31}.jpg`,
+          alt: "Sports day events flute board",
+        })),
+      },
+      {
+        category: "Annual day promotions",
+        images: Array.from({ length: 14 }, (_, i) => ({
+          src: `/images/education-flute/${i + 41}.jpg`,
+          alt: "Annual day promotions flute board",
+        })),
+      },
+    ],
   },
   {
     id: 3,
@@ -97,6 +167,23 @@ export const services = [
       "Shop openings",
       "Sales events",
       "Brand awareness campaigns",
+    ],
+     gallery: [
+      {
+        category: "Brand awareness campaigns",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/kite-flute/${i + 1}.jpg`,
+          alt: "Brand awareness campaigns kite flute board",
+        })),
+      },
+      {
+        category: "Festival promotions",
+        images: Array.from({ length: 4 }, (_, i) => ({
+          src: `/images/kite-flute/${i + 11}.jpg`,
+          alt: "Event promotion kite flute board",
+        })),
+      },
+      
     ],
   },
   {
@@ -121,7 +208,31 @@ export const services = [
       "Private parking areas",
       "Office complexes",
     ],
+     gallery: [
+      {
+        category: "Private parking areas",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/nopark-flute/${i + 1}.jpg`,
+          alt: "Private parking areas no parking board",
+        })),
+      },
+      {
+        category: "Residential apartments",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/nopark-flute/${i + 11}.jpg`,
+          alt: "Residential apartments no parking board",
+        })),
+      },
+      {
+        category: "Commercial buildings",
+        images: Array.from({ length: 13 }, (_, i) => ({
+          src: `/images/nopark-flute/${i + 21}.jpg`,
+          alt: "Commercial buildings no parking board",
+        })),
+      },
+    ],
   },
+
   {
     id: 5,
     title: "Flute Boards Printing For Hospitals",
@@ -143,6 +254,22 @@ export const services = [
       "Doctor availability boards",
       "Emergency signage",
       "Hospital promotions",
+    ],
+     gallery: [
+      {
+        category: "Hospital promotions",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/hospital-flute/${i + 1}.jpg`,
+          alt: "Hospital promotions flute board",
+        })),
+      },
+      {
+        category: "Health awareness campaigns",
+        images: Array.from({ length: 11 }, (_, i) => ({
+          src: `/images/hospital-flute/${i + 11}.jpg`,
+          alt: "Health awareness campaigns flute board",
+        })),
+      },
     ],
   },
   {
@@ -167,6 +294,16 @@ export const services = [
       "Field demonstrations",
       "Warehouse signage",
     ],
+     gallery: [
+      {
+        category: "Pesticide Advertising",
+        images: Array.from({ length: 8 }, (_, i) => ({
+          src: `/images/Pesticide-flute/${i + 1}.jpg`,
+          alt: "Pesticide flute board advertising",
+        })),
+      },
+     
+    ],
   },
   {
     id: 7,
@@ -189,6 +326,23 @@ export const services = [
       "Party meetings",
       "Voter awareness drives",
       "Constituency offices",
+    ],
+     gallery: [
+      {
+        category: "Election campaigns",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Political-flute/${i + 1}.jpg`,
+          alt: "Election campaigns political flute board",
+        })),
+      },
+      {
+        category: "Voter awareness drives",
+        images: Array.from({ length: 9 }, (_, i) => ({
+          src: `/images/Political-flute/${i + 11}.jpg`,
+          alt: "Voter awareness drives political flute board",
+        })),
+      },
+      
     ],
   },
   {
@@ -213,9 +367,37 @@ export const services = [
       "Photo displays",
       "Event backdrops",
     ],
-    gallery: [
-      { src: "/images/services/foam-board.jpg", alt: "Foam board display prints" },
-      { src: "/images/gallery/gallery-5.jpg", alt: "Foam board retail display" },
+
+     gallery: [
+      {
+        category: "Event backdrops",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Foam-Board/${i + 1}.jpg`,
+          alt: "Event backdrops foam board",
+        })),
+      },
+      {
+        category: "Presentation boards",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Foam-Board/${i + 11}.jpg`,
+          alt: "Presentation boards foam board",
+        })),
+      },
+      {
+        category: "Photo displays",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Foam-Board/${i + 21}.jpg`,
+          alt: "Photo displays foam board",
+        })),
+      },
+      {
+        category: "Exhibition displays",
+        images: Array.from({ length: 8 }, (_, i) => ({
+          src: `/images/Foam-Board/${i + 31}.jpg`,
+          alt: "Exhibition displays foam board",
+        })),
+      },
+      
     ],
   },
   {
@@ -238,6 +420,23 @@ export const services = [
       "Photo booths",
       "Retail promotions",
       "Wedding decorations",
+    ],
+     gallery: [
+      {
+        category: "Product launches",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Foam-Cut/${i + 1}.jpg`,
+          alt: "Product launches advertising foam cut out",
+        })),
+      },
+      {
+        category: "Wedding decorations",
+        images: Array.from({ length: 4 }, (_, i) => ({
+          src: `/images/Foam-Cut/${i + 11}.jpg`,
+          alt: "Wedding decorations foam cut out",
+        })),
+      },
+      
     ],
   },
   {
@@ -262,6 +461,23 @@ export const services = [
       "Trade show displays",
       "Wall murals",
     ],
+     gallery: [
+      {
+        category: "Outdoor banners",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/EcoSolvent-Printing/${i + 1}.jpg`,
+          alt: "Outdoor banners eco solvent printing",
+        })),
+      },
+      {
+        category: "Trade show displays",
+        images: Array.from({ length: 9 }, (_, i) => ({
+          src: `/images/EcoSolvent-Printing/${i + 11}.jpg`,
+          alt: "Trade show displays eco solvent printing",
+        })),
+      },
+      
+    ],
   },
   {
     id: 11,
@@ -285,9 +501,23 @@ export const services = [
       "Window displays",
       "Product labels",
     ],
+   
     gallery: [
-      { src: "/images/services/vinyl-printing.jpg", alt: "Vinyl printing in progress" },
-      { src: "/images/gallery/gallery-3.jpg", alt: "Vehicle vinyl wrap branding" },
+      {
+        category: "Product labels",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Vinyl-Printing/${i + 1}.jpg`,
+          alt: "Product labels vinyl printing",
+        })),
+      },
+      {
+        category: "Window displays",
+        images: Array.from({ length: 4 }, (_, i) => ({
+          src: `/images/Vinyl-Printing/${i + 11}.jpg`,
+          alt: "Window displays vinyl printing",
+        })),
+      },
+      
     ],
   },
   {
@@ -312,6 +542,16 @@ export const services = [
       "Bus and auto branding",
       "Building facades",
     ],
+     gallery: [
+      {
+        category: "Office glass partitions",
+        images: Array.from({ length: 4 }, (_, i) => ({
+          src: `/images/One-Way-Vision/${i + 1}.jpg`,
+          alt: "Office glass partitions one way vision printing",
+        })),
+      },
+     
+    ],
   },
   {
     id: 13,
@@ -335,10 +575,42 @@ export const services = [
       "Construction site branding",
       "Trade show backdrops",
     ],
-    gallery: [
-      { src: "/images/services/flex-printing.jpg", alt: "Large format flex printing" },
-      { src: "/images/gallery/gallery-1.jpg", alt: "Outdoor flex hoarding" },
-      { src: "/images/gallery/gallery-6.jpg", alt: "Building flex banner" },
+     gallery: [
+      {
+        category: "Shop front banners",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Flex-Printing/${i + 1}.jpg`,
+          alt: "Shop front banners advertising",
+        })),
+      },
+      {
+        category: "Hoarding advertisements",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Flex-Printing/${i + 11}.jpg`,
+          alt: "Hoarding advertisements",
+        })),
+      },
+      {
+        category: "Event banners",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Flex-Printing/${i + 21}.jpg`,
+          alt: "Event banners",
+        })),
+      },
+      {
+        category: "Political Campaigns",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Flex-Printing/${i + 31}.jpg`,
+          alt: "Political campaign pole flex board",
+        })),
+      },
+      {
+        category: "Trade show backdrops",
+        images: Array.from({ length: 5}, (_, i) => ({
+          src: `/images/Flex-Printing/${i + 41}.jpg`,
+          alt: "Trade show backdrops",
+        })),
+      },
     ],
   },
   {
@@ -363,6 +635,16 @@ export const services = [
       "Maps and charts",
       "Important signage",
     ],
+     gallery: [
+      {
+        category: "Outdoor banners",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/Flex-Lamination/${i + 1}.jpg`,
+          alt: "Outdoor banners",
+        })),
+      },
+     
+    ],
   },
   {
     id: 15,
@@ -386,6 +668,16 @@ export const services = [
       "Doctors and lawyers",
       "Shop owners",
     ],
+     gallery: [
+      {
+        category: "Business professionals",
+        images: Array.from({ length: 5 }, (_, i) => ({
+          src: `/images/Visiting-Card-Printing/${i + 1}.jpg`,
+          alt: "Business professionals",
+        })),
+      },
+      
+    ],
   },
   {
     id: 16,
@@ -408,9 +700,14 @@ export const services = [
       "Office building names",
       "Directional signs",
     ],
-    gallery: [
-      { src: "/images/services/led-signage.jpg", alt: "LED signage board shop front" },
-      { src: "/images/gallery/gallery-4.jpg", alt: "Illuminated LED neon sign" },
+     gallery: [
+      {
+        category: "Shop name boards",
+        images: Array.from({ length: 9 }, (_, i) => ({
+          src: `/images/LED-Signage/${i + 1}.jpg`,
+          alt: "Shop name boards advertising",
+        })),
+      },
     ],
   },
   {
@@ -435,8 +732,79 @@ export const services = [
       "Pop-up food stalls",
       "Festival food carts",
     ],
+     gallery: [
+      {
+        category: "Roadside Advertising",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 1}.jpg`,
+          alt: "Roadside pole flute board advertising",
+        })),
+      },
+      {
+        category: "Event Promotions",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 11}.jpg`,
+          alt: "Event promotion pole flute board",
+        })),
+      },
+      {
+        category: "Directional Signage",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 21}.jpg`,
+          alt: "Directional pole flute board signage",
+        })),
+      },
+      {
+        category: "Political Campaigns",
+        images: Array.from({ length: 10 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 31}.jpg`,
+          alt: "Political campaign pole flute board",
+        })),
+      },
+      {
+        category: "Business Announcements",
+        images: Array.from({ length: 9 }, (_, i) => ({
+          src: `/images/pole-flute/${i + 41}.jpg`,
+          alt: "Business announcement pole flute board",
+        })),
+      },
+    ],
   },
 ]
+
+export type GalleryImageItem = { src: string; alt: string }
+export type GalleryCategoryGroup = {
+  category: string
+  images: GalleryImageItem[]
+}
+export type FlatGalleryImage = GalleryImageItem & { category: string }
+
+/** Numbered jpg paths for a folder (1–50 images) */
+export function galleryImagesFromFolder(
+  folder: string,
+  count: number,
+  alt: string,
+  startIndex = 1
+): GalleryImageItem[] {
+  const safeCount = Math.min(Math.max(count, 0), 50)
+  return Array.from({ length: safeCount }, (_, i) => ({
+    src: `/images/${folder}/${startIndex + i}.jpg`,
+    alt,
+  }))
+}
+
+/** Flatten categorized gallery for lightbox / modal (services listing page) */
+export function getFlatServiceGallery(
+  service: (typeof services)[number]
+): FlatGalleryImage[] {
+  if (!service.gallery?.length) return []
+  return service.gallery.flatMap((group) =>
+    group.images.map((image) => ({
+      ...image,
+      category: group.category,
+    }))
+  )
+}
 
 export const navLinks = [
   { label: "Home", href: "/" },

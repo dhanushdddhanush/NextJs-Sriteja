@@ -94,14 +94,7 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-sm opacity-70 transition-opacity hover:opacity-100"
-                >
-                  Blog
-                </Link>
-              </li>
+              
               <li>
                 <Link
                   href="/privacy-policy"
@@ -129,7 +122,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li>
                 <Link
-                  href="/services/flex-printing"
+                  href="/services/flex-printing-landing"
                   className="text-sm opacity-70 transition-opacity hover:opacity-100"
                 >
                   Flex Printing

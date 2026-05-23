@@ -40,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...serviceUrls,
     {
+      url: `${baseUrl}/services/flex-printing-landing`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",

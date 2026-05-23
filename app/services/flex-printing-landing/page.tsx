@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Phone, Mail, MapPin, Clock } from "lucide-react"
+import { ArrowRight, Phone } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Flex Printing Services in Tanuku | Best Flex Banner Printing",
-  description: "Professional flex printing and flex banner printing services in Tanuku, West Godavari. Outdoor flex printing, political flex printing, shop flex printing, event flex printing at affordable prices.",
+  description:
+    "Professional flex printing and flex banner printing services in Tanuku, West Godavari. Outdoor flex printing, political flex printing, shop flex printing, event flex printing at affordable prices.",
   keywords: [
     "flex printing",
     "flex printing near me",
@@ -38,11 +39,11 @@ export const metadata: Metadata = {
     "political banner printing",
     "election banner printing",
     "campaign flex banners",
-    "flex printing services"
+    "flex printing services",
   ],
 }
 
-export default function FlexPrintingPage() {
+export default function FlexPrintingLandingPage() {
   return (
     <>
       {/* Hero */}
@@ -55,8 +56,9 @@ export default function FlexPrintingPage() {
             Professional Flex Printing in Tanuku
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-background/70">
-            High-quality, weather-resistant flex printing for outdoor advertising, 
-            political campaigns, business promotions and events in Tanuku, West Godavari.
+            High-quality, weather-resistant flex printing for outdoor advertising,
+            political campaigns, business promotions and events in Tanuku, West
+            Godavari.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
@@ -85,7 +87,8 @@ export default function FlexPrintingPage() {
               Our Flex Printing Services
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Complete range of flex printing solutions for all your advertising needs
+              Complete range of flex printing solutions for all your advertising
+              needs
             </p>
           </div>
 
@@ -103,7 +106,8 @@ export default function FlexPrintingPage() {
                 Outdoor Flex Printing
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Weather-resistant flex banners perfect for outdoor advertising and promotions.
+                Weather-resistant flex banners perfect for outdoor advertising
+                and promotions.
               </p>
             </div>
 
@@ -120,7 +124,8 @@ export default function FlexPrintingPage() {
                 Political Flex Printing
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Election campaign flex banners and political advertising materials.
+                Election campaign flex banners and political advertising
+                materials.
               </p>
             </div>
 
@@ -137,7 +142,8 @@ export default function FlexPrintingPage() {
                 Shop Flex Printing
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Custom flex banners for shops, showrooms and business establishments.
+                Custom flex banners for shops, showrooms and business
+                establishments.
               </p>
             </div>
 
@@ -154,7 +160,8 @@ export default function FlexPrintingPage() {
                 Event Flex Printing
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Festival flex banners, event promotions and celebration flex printing.
+                Festival flex banners, event promotions and celebration flex
+                printing.
               </p>
             </div>
 
@@ -171,7 +178,8 @@ export default function FlexPrintingPage() {
                 Large Format Flex
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Extra-large flex printing for hoardings, billboards and mega displays.
+                Extra-large flex printing for hoardings, billboards and mega
+                displays.
               </p>
             </div>
 
@@ -188,7 +196,8 @@ export default function FlexPrintingPage() {
                 Custom Flex Design
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Personalized flex banner designs with your brand colors and logos.
+                Personalized flex banner designs with your brand colors and
+                logos.
               </p>
             </div>
           </div>
@@ -216,7 +225,8 @@ export default function FlexPrintingPage() {
                 High Quality Printing
               </h3>
               <p className="mt-2 text-sm text-primary-foreground/70">
-                Premium quality flex materials with vibrant, long-lasting colors.
+                Premium quality flex materials with vibrant, long-lasting
+                colors.
               </p>
             </div>
 

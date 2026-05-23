@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="mt-8 grid grid-cols-2 gap-6">
                 <div>
                   <div className="font-[family-name:var(--font-heading)] text-3xl font-bold text-primary">
-                    10+
+                    13+
                   </div>
                   <div className="text-sm text-muted-foreground">
                     Years Experience
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <div className="font-[family-name:var(--font-heading)] text-3xl font-bold text-primary">
-                    5000+
+                    10000+
                   </div>
                   <div className="text-sm text-muted-foreground">
                     Projects Done
