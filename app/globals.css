@@ -145,6 +145,21 @@
   }
 }
 
+@keyframes whatsapp-blink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+  }
+  50% {
+    opacity: 0.88;
+    box-shadow: 0 4px 22px rgba(37, 211, 102, 0.85);
+  }
+}
+
+.whatsapp-float {
+  animation: whatsapp-blink 1.4s ease-in-out infinite;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

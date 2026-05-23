@@ -83,17 +83,20 @@ export default function ServicesPage() {
                 className="group rounded-xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex flex-col gap-6 p-6 h-full">
-                  {/* Image */}
-                  <div className="relative w-full h-48 rounded-lg overflow-hidden">
+                  {/* Image — wide banners (~543×196); contain avoids cropping text on mobile */}
+                  <div className="relative w-full overflow-hidden rounded-lg bg-muted/20">
                     <button
+                      type="button"
                       onClick={() => openImageGallery(service.title)}
-                      className="relative w-full h-full overflow-hidden rounded-lg group-hover:scale-105 transition-transform"
+                      className="group relative block w-full"
                     >
                       <Image
                         src={`/images/servicebanners/${getServiceImage(service.slug)}`}
                         alt={service.title}
-                        fill
-                        className="object-cover"
+                        width={543}
+                        height={196}
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className="h-auto w-full object-contain"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 transition-colors group-hover:bg-foreground/30">
                         <span className="translate-y-4 rounded-lg bg-background/90 px-4 py-2 text-xs font-medium text-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
