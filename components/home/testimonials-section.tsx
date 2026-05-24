@@ -2,33 +2,7 @@
 
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect, useCallback } from "react"
-
-const testimonials = [
-  {
-    name: "Rajesh Kumar",
-    role: "Business Owner, Tanuku",
-    content:
-      "Sri Teja Flex delivered outstanding quality for our shop signage. The colors are vibrant and it has lasted through two monsoon seasons without any fading.",
-  },
-  {
-    name: "Dr. Lakshmi Devi",
-    role: "Hospital Administrator",
-    content:
-      "We ordered hospital directory boards and health awareness displays. The quality and professionalism of Sri Teja Flex is unmatched in Tanuku.",
-  },
-  {
-    name: "Srinivas Rao",
-    role: "Political Campaign Manager",
-    content:
-      "Needed 500 flute boards in 3 days for an election campaign. Sri Teja Flex delivered on time with excellent print quality. Highly recommended!",
-  },
-  {
-    name: "Anjali Reddy",
-    role: "School Principal",
-    content:
-      "The educational displays and school branding materials they created for our institution are exceptional. The students love the colorful, informative boards!",
-  },
-]
+import { homeTestimonials } from "@/data/home"
 
 export function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
@@ -44,7 +18,7 @@ export function TestimonialsSection() {
   }
 
   const itemsPerSlide = getItemsPerSlide()
-  const maxIndex = Math.max(0, testimonials.length - itemsPerSlide)
+  const maxIndex = Math.max(0, homeTestimonials.length - itemsPerSlide)
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev >= maxIndex ? 0 : prev + 1))
@@ -82,7 +56,7 @@ export function TestimonialsSection() {
               className="flex transition-transform duration-500 ease-in-out gap-8"
               style={{ transform: `translateX(-${current * (100 / itemsPerSlide)}%)` }}
             >
-              {testimonials.map((testimonial) => (
+              {homeTestimonials.map((testimonial) => (
                 <div
                   key={testimonial.name}
                   className={`flex-shrink-0 ${

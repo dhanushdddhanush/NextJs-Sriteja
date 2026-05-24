@@ -1,16 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-
-const clients = [
-  { name: "Client Logo 1", image: "/images/gallery/gallery-1.jpg" },
-  { name: "Client Logo 2", image: "/images/gallery/gallery-2.jpg" },
-  { name: "Client Logo 3", image: "/images/gallery/gallery-3.jpg" },
-  { name: "Client Logo 4", image: "/images/gallery/gallery-4.jpg" },
-  { name: "Client Logo 5", image: "/images/gallery/gallery-5.jpg" },
-  { name: "Client Logo 6", image: "/images/gallery/gallery-6.jpg" },
-  { name: "Client Logo 7", image: "/images/services/flex-printing.jpg" },
-  { name: "Client Logo 8", image: "/images/services/foam-board.jpg" },
-]
+import { homeClients } from "@/data/home"
 
 export function ClientsSection() {
   return (
@@ -30,7 +20,7 @@ export function ClientsSection() {
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
-          {clients.map((client, index) => (
+          {homeClients.map((client, index) => (
             <div
               key={index}
               className="relative h-24 overflow-hidden rounded-xl transition-transform hover:scale-105"

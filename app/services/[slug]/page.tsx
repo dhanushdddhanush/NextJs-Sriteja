@@ -4,7 +4,16 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { CheckCircle2, ArrowRight, Phone, ChevronRight } from "lucide-react"
 import { services, siteConfig } from "@/lib/site-data"
+import {
+  nearMeKeywords,
+  locationKeywords,
+  longTailKeywords,
+  questionKeywords,
+  voiceSearchKeywords,
+  serviceSpecificKeywords,
+} from "@/data/services-seo"
 import { ServiceGallery } from "@/components/service-gallery"
+import { ServiceVideoSlider } from "@/components/service-video-slider"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -26,210 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Comprehensive SEO keywords based on service type
   const getKeywords = (serviceTitle: string, slug: string): string[] => {
-    // 1️⃣ High Intent "Near Me" Keywords (Common for all services)
-    const nearMeKeywords = [
-      "flex printing near me",
-      "flex banner printing near me",
-      "printing shop near me",
-      "banner printing near me",
-      "sign board printing near me",
-      "vinyl printing near me",
-      "visiting card printing near me",
-      "led sign board near me",
-      "digital printing near me",
-      "advertising board printing near me",
-      "custom banner printing near me",
-      "large banner printing near me",
-      "poster printing near me",
-      "business printing near me",
-      "shop board printing near me",
-      "cheap flex printing near me",
-      "fast banner printing near me",
-      "outdoor banner printing near me",
-      "indoor banner printing near me",
-      "commercial printing near me",
-      "printing services near me",
-      "flex board printing near me",
-      "custom sign boards near me",
-      "professional printing near me",
-      "graphic printing near me"
-    ]
-
-    // 15️⃣ Location Based Keywords (Common for all services)
-    const locationKeywords = [
-      "flex printing in Tanuku",
-      "flex printing Tanuku",
-      "flute board printing Tanuku",
-      "vinyl printing Tanuku",
-      "printing services Tanuku",
-      "banner printing Tanuku",
-      "sign board printing Tanuku",
-      "led sign board Tanuku",
-      "flex printing West Godavari",
-      "banner printing West Godavari",
-      "printing services West Godavari",
-      "flex printing Andhra Pradesh",
-      "banner printing Andhra Pradesh",
-      "near Tanuku",
-      "in Tanuku town",
-      "Tanuku printing services"
-    ]
-
-    // 16️⃣ Long Tail Keywords (Common for all services)
-    const longTailKeywords = [
-      "best flex printing services in Tanuku",
-      "affordable flex printing in Tanuku",
-      "professional banner printing services",
-      "custom sign board printing services",
-      "cheap banner printing for shops",
-      "outdoor advertising board printing services",
-      "high quality vinyl printing services",
-      "led sign board makers for shops",
-      "professional printing services for businesses"
-    ]
-
-    // 17️⃣ Question Keywords (Common for all services)
-    const questionKeywords = [
-      "what is flex printing",
-      "what is flute board printing",
-      "how much does flex printing cost",
-      "where to print flex banners",
-      "best printing services near me",
-      "how long do flex banners last",
-      "what material is used for flex printing"
-    ]
-
-    // 18️⃣ Voice Search Keywords (Common for all services)
-    const voiceSearchKeywords = [
-      "flex printing shop near me",
-      "banner printing near my location",
-      "where can I print flex banners",
-      "best sign board maker near me",
-      "printing shop open now near me"
-    ]
-
-    // Service-specific keywords
-    const serviceKeywords: Record<string, string[]> = {
-      "pole-flute-board-printing": [
-        // 3️⃣ Flute Board Printing Keywords
-        "flute board printing",
-        "flute board sign boards",
-        "outdoor flute boards",
-        "flute board advertising boards",
-        "flute board printing services",
-        "plastic flute board printing",
-        "real estate flute boards",
-        "political flute boards",
-        "school flute boards",
-        "hospital flute boards",
-        "campaign flute boards",
-        "promotion flute boards",
-        "custom flute boards",
-        "cheap flute board printing",
-        "durable flute boards",
-        "lightweight advertising boards",
-        "printed flute boards",
-        "sign flute boards",
-        "corrugated flute boards",
-        "advertisement flute boards",
-        // 11️⃣ Political Printing Keywords
-        "political banner printing",
-        "political flex printing",
-        "election banner printing",
-        "campaign flex banners",
-        "political advertising boards",
-        "election promotion banners",
-        "political poster printing",
-        // 12️⃣ School Printing Keywords
-        "school banner printing",
-        "school notice board printing",
-        "educational signage printing",
-        "school event banners",
-        "college banner printing",
-        // 13️⃣ Hospital Printing Keywords
-        "hospital sign boards",
-        "medical signage printing",
-        "hospital direction boards",
-        "clinic sign board printing",
-        "medical banner printing"
-      ],
-      "flute-boards-schools-educational": [
-        // 3️⃣ Flute Board Printing Keywords
-        "flute board printing",
-        "flute board sign boards",
-        "outdoor flute boards",
-        "flute board advertising boards",
-        "flute board printing services",
-        "plastic flute board printing",
-        "school flute boards",
-        "educational flute boards",
-        "campaign flute boards",
-        "promotion flute boards",
-        "custom flute boards",
-        "cheap flute board printing",
-        "durable flute boards",
-        "lightweight advertising boards",
-        "printed flute boards",
-        "sign flute boards",
-        "corrugated flute boards",
-        "advertisement flute boards",
-        // 12️⃣ School Printing Keywords (Expanded)
-        "school banner printing",
-        "school notice board printing",
-        "educational signage printing",
-        "school event banners",
-        "college banner printing",
-        "school flute board printing",
-        "educational flute board printing",
-        "school sign board printing",
-        "college sign boards",
-        "educational institution printing",
-        "school promotional materials",
-        "educational display boards"
-      ],
-      "vinyl-printing": [
-        // 4️⃣ Vinyl Printing Keywords
-        "vinyl printing services",
-        "vinyl sticker printing",
-        "vinyl banner printing",
-        "shop vinyl printing",
-        "wall vinyl printing",
-        "vinyl branding printing",
-        "custom vinyl graphics",
-        "vinyl advertising prints",
-        "vinyl poster printing",
-        "vinyl sign printing",
-        "vinyl wall stickers printing",
-        "vinyl glass stickers printing",
-        "vehicle vinyl stickers",
-        "vinyl decal printing",
-        "custom vinyl stickers",
-        "shop window vinyl printing",
-        "advertising vinyl stickers",
-        "commercial vinyl printing"
-      ],
-      "led-signage-boards": [
-        // 6️⃣ LED Sign Board Keywords
-        "led sign board makers",
-        "led sign board printing",
-        "led shop board",
-        "led sign boards near me",
-        "custom led sign boards",
-        "led display boards",
-        "led advertising boards",
-        "illuminated sign boards",
-        "led board makers",
-        "digital led boards",
-        "shop led boards",
-        "led advertising signage",
-        "led business boards",
-        "led sign board manufacturers"
-      ]
-    }
-
     return [
       ...nearMeKeywords,
-      ...(serviceKeywords[slug] || []),
+      ...(serviceSpecificKeywords[slug] || []),
       ...locationKeywords,
       ...longTailKeywords,
       ...questionKeywords,
@@ -333,14 +141,15 @@ export default async function ServicePage({ params }: Props) {
                 </a>
               </div>
             </div>
-            <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl sm:min-h-[260px] lg:max-h-[min(60vh,520px)] lg:min-h-[300px]">
+            <div className="relative mx-auto aspect-square w-full max-w-[480px] overflow-hidden rounded-[36px] shadow-xl lg:ml-auto">
               <Image
                 src={heroImage}
                 alt={service.title}
-                fill
+                width={604}
+                height={604}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain"
+                className="h-full w-full object-cover"
               />
             </div>
             </div>
@@ -394,6 +203,29 @@ export default async function ServicePage({ params }: Props) {
       {/* Service Gallery */}
       {service.gallery && service.gallery.length > 0 && (
         <ServiceGallery categories={service.gallery} title={service.title} />
+      )}
+
+      {/* Service Videos */}
+      {service.videos && service.videos.length > 0 && (
+        <section className="bg-muted/40 py-20">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)] lg:items-center">
+              <div className="space-y-6">
+                <span className="inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold tracking-wide text-primary">
+                  Watch & Learn
+                </span>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl font-bold text-foreground md:text-4xl">
+                  {service.title} in Action
+                </h2>
+                <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  Explore real project clips showcasing our process, finishing, and final results. Update the video links anytime to keep this section fresh with your latest work.
+                </p>
+              </div>
+
+              <ServiceVideoSlider videos={service.videos} title={service.title} />
+            </div>
+          </div>
+        </section>
       )}
 
       {/* CTA */}

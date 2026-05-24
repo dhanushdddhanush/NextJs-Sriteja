@@ -1,13 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-
-const stats = [
-  { target: 13, suffix: "+", label: "Years of Experience" },
-  { target: 100000, suffix: "+", label: "Prints Delivered" },
-  { target: 10000, suffix: "+", label: "Happy Clients" },
-  { target: 17, suffix: "+", label: "Services Offered" },
-]
+import { homeStats, type HomeStat } from "@/data/home"
 
 function useCountUp(target: number, duration: number, shouldStart: boolean) {
   const [count, setCount] = useState(0)
@@ -87,7 +81,7 @@ export function StatsSection() {
     <section ref={ref} className="bg-primary py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
-          {stats.map((stat) => (
+          {homeStats.map((stat: HomeStat) => (
             <StatItem
               key={stat.label}
               target={stat.target}

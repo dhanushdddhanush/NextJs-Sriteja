@@ -5,64 +5,9 @@ import Link from "next/link"
 import { Phone, ChevronLeft, ChevronRight } from "lucide-react"
 import { siteConfig } from "@/lib/site-data"
 import { useState, useEffect, useCallback } from "react"
+import { homeHeroSlides } from "@/data/home"
 
-const slides = [
-  {
-    image: "/images/hero-bg.jpg",
-    badge: "India's Trusted Printing Partner",
-    heading: "Professional Flex Printing & Designing Services in Tanuku",
-    description: siteConfig.description,
-  },
-  {
-    image: "/images/hero-slide-2.jpg",
-    badge: "17+ Services Under One Roof",
-    heading: "LED Signage, Vinyl & Foam Board Printing Experts",
-    description:
-      "From illuminated sign boards to precision vinyl prints, we deliver quality that lasts.",
-  },
-  {
-    image: "/images/hero-slide-3.jpg",
-    badge: "10+ Years of Experience",
-    heading: "Trusted by 10000+ Clients Across India",
-    description:
-      "10000+ successful projects delivered with unmatched quality and on-time service.",
-  },
-  {
-    image: "/images/3.jpg",
-    badge: "",
-    heading: "",
-    description:
-      "",
-  },
-   {
-    image: "/images/4.jpg",
-    badge: "",
-    heading: "",
-    description:
-      "",
-  },
-   {
-    image: "/images/5.jpg",
-    badge: "",
-    heading: "",
-    description:
-      "",
-  },
-   {
-    image: "/images/6.jpg",
-    badge: "",
-    heading: "",
-    description:
-      "",
-  },
-   {
-    image: "/images/7.jpg",
-    badge: "",
-    heading: "",
-    description:
-      "",
-  },
-]
+const slides = homeHeroSlides
 
 export function HeroSection() {
   const [current, setCurrent] = useState(0)

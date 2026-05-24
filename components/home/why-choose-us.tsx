@@ -1,43 +1,4 @@
-import { Award, Clock, ThumbsUp, Palette, IndianRupee, Truck } from "lucide-react"
-
-const reasons = [
-  {
-    icon: Award,
-    title: "Premium Quality",
-    description:
-      "We use the latest printing technology and premium materials to ensure every print meets the highest quality standards.",
-  },
-  {
-    icon: Clock,
-    title: "Fast Turnaround",
-    description:
-      "Tight deadline? No problem. Our efficient workflow ensures you get your prints delivered on time, every time.",
-  },
-  {
-    icon: ThumbsUp,
-    title: "Customer Satisfaction",
-    description:
-      "With hundreds of satisfied clients, we prioritize your vision and work until you're completely happy with the result.",
-  },
-  {
-    icon: Palette,
-    title: "Expert Designing",
-    description:
-      "Our in-house design team creates stunning visuals that make your brand stand out from the competition.",
-  },
-  {
-    icon: IndianRupee,
-    title: "Affordable Pricing",
-    description:
-      "Competitive prices without compromising on quality. Get the best value for your printing investment.",
-  },
-  {
-    icon: Truck,
-    title: "Reliable Delivery",
-    description:
-      "From Tanuku to all across West Godavari district, we ensure safe and timely delivery of all your orders.",
-  },
-]
+import { homeReasons } from "@/data/home"
 
 export function WhyChooseUs() {
   return (
@@ -57,7 +18,7 @@ export function WhyChooseUs() {
         </div>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map((reason) => (
+          {homeReasons.map((reason) => (
             <div key={reason.title} className="flex gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <reason.icon className="h-5 w-5" />
